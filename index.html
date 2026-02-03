@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Optional: Add Google Fonts for better typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>Happy Valentine's Day, My Love!</h1>
+    <p>From the moment I met you, my life has been filled with love and joy. You are my everything, and I can't imagine spending my days without you.</p>
+    <p>Will you be my Valentine and make every day feel like this?</p>
+    <button id="yes">Yes! 💖</button>
+    <button id="no">No 😢</button>
+    <div id="response"></div>
+
+    <!-- More floating hearts and flowers for extra effect -->
+    <div class="heart" style="left: 10%; top: 20%;">❤️</div>
+    <div class="heart" style="left: 80%; top: 30%;">💖</div>
+    <div class="heart" style="left: 50%; top: 50%;">💕</div>
+    <div class="heart" style="left: 20%; top: 70%;">💗</div>
+    <div class="heart" style="left: 90%; top: 80%;">💓</div>
+    <div class="heart" style="left: 30%; top: 10%;">❤️</div>
+    <div class="heart" style="left: 70%; top: 60%;">💖</div>
+    <div class="heart" style="left: 5%; top: 40%;">💕</div>
+    <div class="heart" style="left: 95%; top: 90%;">💗</div>
+    <div class="heart" style="left: 60%; top: 25%;">💓</div>
+    <div class="flower" style="left: 15%;">🌸</div>
+    <div class="flower" style="left: 75%;">🌹</div>
+    <div class="flower" style="left: 40%;">🌷</div>
+    <div class="flower" style="left: 60%;">🌺</div>
+    <div class="flower" style="left: 25%;">🌸</div>
+    <div class="flower" style="left: 85%;">🌹</div>
+    <div class="flower" style="left: 35%;">🌷</div>
+    <div class="flower" style="left: 65%;">🌺</div>
+    <div class="flower" style="left: 50%;">🌸</div>
+    <div class="flower" style="left: 10%;">🌹</div>
+
+    <!-- Optional background music for "Yes" effect (add your romantic song file) -->
+    <audio id="romantic-music" src="romantic-song.mp3" preload="auto"></audio>
+
+    <script>
+        // Button interactions
+        document.getElementById('yes').addEventListener('click', function() {
+            const response = document.getElementById('response');
+            response.innerHTML = 'Yay! I love you so much! 💕 Forever my Valentine!';
+            response.classList.add('show');
+            // Play music
+            const music = document.getElementById('romantic-music');
+            music.play();
+            // Trigger massive confetti and heart burst
+            for (let i = 0; i < 150; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.animationDelay = Math.random() * 3 + 's';
+                confetti.style.background = ['#ff69b4', '#ffb3ba', '#ff1493', '#d63384', '#e91e63'][Math.floor(Math.random() * 5)];
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 5000);
+            }
+            // Burst of floating hearts
+            for (let i = 0; i < 30; i++) {
+                const burstHeart = document.createElement('div');
+                burstHeart.className = 'burst-heart';
+                burstHeart.innerHTML = '❤️';
+                burstHeart.style.left = Math.random() * 100 + '%';
+                burstHeart.style.top = Math.random() * 100 + '%';
+                document.body.appendChild(burstHeart);
+                setTimeout(() => burstHeart.remove(), 4000);
+            }
+        });
+        document.getElementById('no').addEventListener('click', function() {
+            const response = document.getElementById('response');
+            response.innerHTML = 'Oh no! But I still love you! 😘';
+            response.classList.add('show');
+        });
+
+        // Auto-generate more floating elements for dynamism (more frequent)
+        setInterval(() => {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = ['❤️', '💖', '💕', '💗', '💓'][Math.floor(Math.random() * 5)];
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.top = Math.random() * 100 + '%';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 8000);
+        }, 1000);  // Faster generation
+
+        setInterval(() => {
+            const flower = document.createElement('div');
+            flower.className = 'flower';
+            flower.innerHTML = ['🌸', '🌹', '🌷', '🌺'][Math.floor(Math.random() * 4)];
+            flower.style.left = Math.random() * 100 + '%';
+            document.body.appendChild(flower);
+            setTimeout(() => flower.remove(), 10000);
+        }, 2000);
+    </script>
+</body>
+</html>

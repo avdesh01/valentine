@@ -1,0 +1,213 @@
+body {
+    font-family: 'Dancing Script', cursive; /* Romantic font */
+    background: linear-gradient(135deg, #ffe6e6, #ffb3ba, #ffecd2); /* Soft pink gradient */
+    color: #d63384;
+    text-align: center;
+    margin: 0; /* Remove margins for full screen */
+    padding: 0; /* Remove padding for full screen */
+    height: 100vh; /* Full viewport height */
+    width: 100vw; /* Full viewport width */
+    overflow: hidden; /* For floating elements */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Mobile-first responsive (full screen on phones) */
+@media (max-width: 768px) { /* Tablets and smaller */
+    body {
+        padding: 10px; /* Minimal padding for small screens */
+        height: 100vh;
+        width: 100vw;
+    }
+    h1 {
+        font-size: 2.5em;
+        margin: 10px 0;
+    }
+    p {
+        font-size: 1.3em;
+        margin: 10px 0;
+    }
+    button {
+        font-size: 1em;
+        padding: 12px 25px;
+        margin: 5px;
+    }
+    .heart, .flower {
+        font-size: 1.2em;
+    }
+}
+
+@media (max-width: 480px) { /* Mobile phones - full screen emphasis */
+    body {
+        padding: 5px; /* Even less padding */
+        height: 100vh;
+        width: 100vw;
+        justify-content: flex-start; /* Start from top for better fit */
+        padding-top: 20px;
+    }
+    h1 {
+        font-size: 2em;
+        margin: 5px 0;
+    }
+    p {
+        font-size: 1.1em;
+        margin: 5px 0;
+    }
+    button {
+        font-size: 0.9em;
+        padding: 10px 20px;
+        margin: 3px;
+    }
+    .heart, .flower {
+        font-size: 1em;
+    }
+}
+
+h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    animation: glow 2s infinite alternate;
+    z-index: 10; /* Above floating elements */
+}
+
+@keyframes glow {
+    from { text-shadow: 2px 2px 4px rgba(0,0,0,0.1); }
+    to { text-shadow: 2px 2px 8px #ff69b4; }
+}
+
+p {
+    font-size: 1.5em;
+    margin-bottom: 30px;
+    line-height: 1.6;
+    z-index: 10;
+}
+
+button {
+    font-size: 1.2em;
+    padding: 15px 30px;
+    margin: 10px;
+    border: 2px solid #ff69b4;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: #fff;
+    color: #d63384;
+    font-family: inherit;
+    z-index: 10;
+}
+
+button:hover {
+    background: #ff69b4;
+    color: white;
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.5);
+}
+
+#yes {
+    box-shadow: 0 0 10px #ff69b4;
+}
+
+#no {
+    box-shadow: 0 0 10px #ccc;
+}
+
+#response {
+    font-size: 2em;
+    margin-top: 20px;
+    opacity: 0;
+    transition: opacity 1s ease;
+    animation: none;
+    z-index: 10;
+}
+
+#response.show {
+    opacity: 1;
+    animation: heart-beat 1s infinite;
+}
+
+@keyframes heart-beat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* Blinking hearts with extra pulse */
+.heart {
+    position: absolute;
+    font-size: 2em;
+    color: #ff1493;
+    animation: blink 1.5s infinite, float 6s ease-in-out infinite, pulse 3s infinite;
+    pointer-events: none;
+    z-index: 5;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0.3; }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+/* Burst hearts for "Yes" effect */
+.burst-heart {
+    position: absolute;
+    font-size: 2em;
+    color: #ff1493;
+    animation: burst 4s ease-out forwards;
+    pointer-events: none;
+    z-index: 5;
+}
+
+@keyframes burst {
+    0% { transform: scale(0) rotate(0deg); opacity: 1; }
+    50% { transform: scale(1.5) rotate(180deg); opacity: 0.8; }
+    100% { transform: scale(0) rotate(360deg); opacity: 0; }
+}
+
+/* Flowers with swirling animation */
+.flower {
+    position: absolute;
+    font-size: 1.5em;
+    color: #ff69b4;
+    animation: petal-fall 8s linear infinite, swirl 5s infinite;
+    pointer-events: none;
+    z-index: 5;
+}
+
+@keyframes petal-fall {
+    0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+}
+
+@keyframes swirl {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(180deg); }
+}
+
+/* Confetti effect */
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #ff69b4;
+    animation: confetti-fall 3s linear infinite;
+    pointer-events: none;
+    border-radius: 50%;
+    z-index: 5;
+}
+
+@keyframes confetti-fall {
+    0% { transform: translateY(-100vh) rotate(0deg); }
+    100% { transform: translateY(100vh) rotate(720deg); }
+}
